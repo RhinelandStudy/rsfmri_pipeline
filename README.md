@@ -1,5 +1,38 @@
 # rsfmri_pipeline
-RestingState functional MRI processing pipeline using RestingState BOLD scans.
+
+This repository constains the Nipype wrapper for the  RestingState functional MRI processing pipeline using RestingState BOLD scans.
+
+This pipeline corresponds to standard SPM process and includes a specifically trained FMRIB's ICA-based X-noisefier (FIX 1.06) classifier trained with 80 participants from the Rhineland Study. If you use this wrapper please cite:
+
+Griffanti, L. et al. ICA-based artefact removal and accelerated fMRI acquisition for improved resting state network imaging. NeuroImage 95, 232–247 (2014).
+
+```
+@article{salimi2014automatic,
+  title={Automatic denoising of functional MRI data: combining independent component analysis and hierarchical fusion of classifiers},
+  author={Salimi-Khorshidi, Gholamreza and Douaud, Gwena{\"e}lle and Beckmann, Christian F and Glasser, Matthew F and Griffanti, Ludovica and Smith, Stephen M},
+  journal={Neuroimage},
+  volume={90},
+  pages={449--468},
+  year={2014},
+  publisher={Elsevier}
+}
+```
+
+The QC pipeline including the carpet plot based on:
+
+Power, J. D. A simple but useful way to assess fMRI scan qualities. Neuroimage 154, 150–158 (2017).
+
+```
+@article{power2017simple,
+  title={A simple but useful way to assess fMRI scan qualities},
+  author={Power, Jonathan D},
+  journal={Neuroimage},
+  volume={154},
+  pages={150--158},
+  year={2017},
+  publisher={Elsevier}
+}
+```
 
 
 ## Build docker image
