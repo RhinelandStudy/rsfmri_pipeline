@@ -85,9 +85,9 @@ RUN echo "Downloading and installing FSL 6..." \
     && mv -f fsl /opt/ && chmod a+x /opt/fsl/bin/* \
     && rm -rf fsl-6.0.4-sources.tar.gz
 
-ADD ./fix4mcrv97/fix.tar.gz /opt/
+ADD ./fix4mcrv97/fix /opt/fix
 
-ADD ./spmscripts/spm12_r7771_mcrv97.tar.gz  /opt/
+ADD ./spmscripts/spm12_r7771_mcrv97  /opt/spm12_r7771_mcrv97
 
 COPY ./src /opt/
 
