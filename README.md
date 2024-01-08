@@ -67,7 +67,7 @@ docker run --rm -v /path/to/input_scans:/input \
         --subjects test_subject_01 \
         -w /work \
         -o /output \ 
-        -p 2 -t 2 -m 2 \
+        -p 2 -m 2 \
         -d /path/to/TrainWts.RData \
         --fixth 10
 
@@ -90,7 +90,6 @@ When the singularit image is created, then it can be run as follows:
 ```bash
 
 singularity run -e -B /path/to/input_scans:/input \
-                   -B /path/to/inputdata:/input \
                    -B /path/to/work:/work \
                    -B /path/to/output:/output \
                    -B /path/to/trainwts:/trainwts \
