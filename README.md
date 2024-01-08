@@ -95,6 +95,9 @@ singularity run -e -B /path/to/input_scans:/input \
                    -B /path/to/trainwts:/trainwts \
        rsfmri_pipeline.sif 
     run_fmri_pipeline \
+     -s /input \
+     -w /work \
+     -o /output \
      -p 2 \
      -m 2 \
      -d /trainwts/TrainWts.RData \
