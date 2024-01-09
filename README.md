@@ -50,6 +50,19 @@ docker build -t rsfmri_pipeline -f docker/Dockerfile .
 docker pull dznerheinlandstudie/rheinlandstudie:rsfmri_pipeline
 ```
 
+
+## Required input
+
+The rsfmri_pipeline requires the following scans to be existing in the subject's folder:
+ 1. B0.nii.gz
+ 2. B0_Phase.nii.gz
+ 3. T1.nii.gz
+ 4. RestingState.nii.gz
+
+### Required training weights file
+The train weights data ```TrainWtsRS80OP40NP40.RData``` must be downloaded from the repository directory ```src/fmri_pipeline/train_weights```.
+
+
 ## Run pipeline:
 
 ### Using docker
@@ -61,6 +74,7 @@ The pipeline can be run with docker by running the container as follows:
 docker run --rm -v /path/to/input_scans:/input \
                  -v /path/to/work_folder:/work \
                  -v /path/to/output:/output \
+                 -v /path/to/train_wts:/train_wts \
         dznerheinlandstudie/rheinlandstudie:rsfmri_pipeline \
         run_fmri_pipeline \
         -s /input \
@@ -68,7 +82,7 @@ docker run --rm -v /path/to/input_scans:/input \
         -w /work \
         -o /output \ 
         -p 2 -m 2 \
-        -d /path/to/TrainWts.RData \
+        -d /train_wts/TrainWtsRS80OP40NP40.RData \
         --fixth 10
 
 ```
@@ -92,15 +106,15 @@ When the singularit image is created, then it can be run as follows:
 singularity run -e -B /path/to/input_scans:/input \
                    -B /path/to/work:/work \
                    -B /path/to/output:/output \
-                   -B /path/to/trainwts:/trainwts \
-       rsfmri_pipeline.sif 
+                   -B /path/to/train_wts:/train_wts \
+       rsfmri_pipeline.sif \ 
     run_fmri_pipeline \
      -s /input \
      -w /work \
      -o /output \
      -p 2 \
      -m 2 \
-     -d /trainwts/TrainWts.RData \
+     -d /trainw_ts/TrainWtsRS80OP40NP40.RData \
      --fixth 10 \
      --subjects test_subject_01
 
